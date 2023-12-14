@@ -12,7 +12,7 @@ const fontPicker = document.querySelectorAll(".font__section input");
 
 const settings = {
   fontColor: "#000",
-  bgColor: "#fff",
+  bgColor: "#ffffff",
   font: "pentagra",
 };
 const settingsCookies = getCookies("settings");
@@ -36,6 +36,18 @@ if (settingsCookies !== undefined) {
       settings.font = settingsCookies.font;
     }
   }
+} else {
+  clockWrapper.style.color = settings.fontColor;
+  clockColor.value = settings.fontColor;
+  body.style.background = settings.bgColor;
+  bodyColor.value = settings.bgColor;
+  clockWrapper.style.fontFamily = settings.font;
+  for (let i = 0; i < fontPicker.length; i++) {
+    if (fontPicker[i].value === settings.font) {
+      fontPicker[i].checked = true;
+    }
+  }
+  document.cookie = `settings=${JSON.stringify(settings)}; max-age=31536000`;
 }
 
 setInterval(function () {
