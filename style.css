@@ -1,0 +1,21 @@
+@font-face {
+  font-family: pentagra;
+  src: url(Pentagra.ttf);
+  font-weight: normal;
+}
+* {
+  margin: 0;
+}
+
+body {
+  display: flex;
+  color: red;
+  height: 100vh;
+  font-family: pentagra;
+}
+
+.clock__wrapper {
+  display: flex;
+  margin: auto;
+  font-size: clamp(16px, 80vh, 35vw);
+}/*# sourceMappingURL=style.css.map */
