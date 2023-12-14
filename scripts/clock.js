@@ -11,7 +11,7 @@ const bodyColor = document.getElementById("bg__color__picker");
 const fontPicker = document.querySelectorAll(".font__section input");
 
 const settings = {
-  fontColor: "#000",
+  fontColor: "#000000",
   bgColor: "#ffffff",
   font: "pentagra",
 };
