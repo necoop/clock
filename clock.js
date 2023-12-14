@@ -1,11 +1,16 @@
-const bgColor = 'white';
-const fontColor = 'black';
-
+let bgColor = 'white';
+let fontColor = 'black';
+const clockWrapper = document.getElementsByClassName('clock__wrapper')[0];
 const body = document.querySelector('body');
+
 body.style.background = bgColor;
 body.style.color = fontColor;
 
-setInterval(function(){
+const clockColor = document.getElementById('clock__color__picker');
+const bodyColor = document.getElementById('bg__color__picker');
+const fontPicker = document.querySelectorAll('.font__section input');
+
+setInterval(function () {
   const date = new Date();
 
   let hour = date.getHours();
@@ -29,3 +34,19 @@ setInterval(function(){
     dotColor.style.color = fontColor;
   }
 }, 500);
+
+clockColor.addEventListener('change', function (event) {
+  fontColor = event.target.value;
+  clockWrapper.style.color = fontColor;
+})
+
+bodyColor.addEventListener('change', function (event) {
+  bgColor = event.target.value;
+  body.style.background = bgColor;
+})
+
+for(let i = 0; i < fontPicker.length; i++){
+  fontPicker[i].addEventListener('change', function(event){
+    clockWrapper.style.fontFamily = event.target.value;
+  })
+}

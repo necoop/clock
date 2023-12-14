@@ -1,19 +1,95 @@
 @font-face {
   font-family: pentagra;
-  src: url(Pentagra.ttf);
+  src: url(fonts/Pentagra.ttf);
   font-weight: normal;
 }
-*{
+
+@font-face {
+  font-family: CCElephantmen;
+  src: url("fonts/CCElephantmen Regular.ttf");
+}
+
+* {
   margin: 0;
 }
+
 body {
   display: flex;
   color: red;
   height: 100vh;
   font-family: pentagra;
+  position: relative;
+  overflow-y: hidden;
 }
+
 .clock__wrapper {
   display: flex;
   margin: auto;
   font-size: clamp(16px, 80vh, 35vw);
+  div{
+    color: inherit;
+  }
+}
+
+.settings__wrapper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.settings__section {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  gap: 40px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  width: fit-content;
+  margin: 0 auto;
+
+  input[type=color] {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: fit-content;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.color__section {
+  width: fit-content;
+  position: relative;
+  &::after{
+    content: '';
+    position: absolute;
+    right: -22px;
+    top: 10%;
+    width: 1px;
+    height: 90%;
+    background: lightgrey;
+  }
+}
+.font__section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.pentagra__font{
+  font-family: pentagra;
+}
+.CCElephantmen__font{
+  font-family: CCElephantmen;
 }
