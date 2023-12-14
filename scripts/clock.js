@@ -3,9 +3,6 @@ let fontColor;
 const clockWrapper = document.getElementsByClassName("clock__wrapper")[0];
 const body = document.querySelector("body");
 
-body.style.background = bgColor;
-body.style.color = fontColor;
-
 const clockColor = document.getElementById("clock__color__picker");
 const bodyColor = document.getElementById("bg__color__picker");
 const fontPicker = document.querySelectorAll(".font__section input");
