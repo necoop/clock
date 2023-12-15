@@ -96,7 +96,6 @@ for (let i = 0; i < fontPicker.length; i++) {
 
 function getCookies(cookieName) {
   const cookies = document.cookie.split("; ");
-
   for (const cookie of cookies) {
     const [name, value] = cookie.split("=");
     if (name.trim() === cookieName) {
@@ -107,3 +106,19 @@ function getCookies(cookieName) {
   // Если кука не найдена, возвращаем undefined
   return undefined;
 }
+function getMyCookie(cookieName, settingName) {
+  const cookies = document.cookie.split("; ");
+  for (const cookie of cookies) {
+    const [name, setting] = cookie.split('=');
+    if (name === cookieName) {
+      const cookieInObj = JSON.parse(setting);
+      if (cookieInObj.hasOwnProperty(settingName)) {
+        return cookieInObj[settingName];
+      }
+    }
+  }
+  // Вернуть что-то по умолчанию или null, если кука или ключ не найдены.
+  return null;
+}
+
+console.log(getMyCookie('settings', 'fontColor'));
