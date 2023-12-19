@@ -6,6 +6,10 @@ const body = document.querySelector("body");
 const clockColor = document.getElementById("clock__color__picker");
 const bodyColor = document.getElementById("bg__color__picker");
 const fontPicker = document.querySelectorAll(".font__section input");
+const settingBtn = document.getElementsByClassName('settings_ico')[0];
+const settingsPanel = document.getElementsByClassName('settings__wrapper')[0];
+const settingsSection = document.getElementsByClassName('settings__section')[0];
+const overlay = document.getElementsByClassName('overlay')[0];
 
 const settings = {
   fontColor: "#000000",
@@ -13,6 +17,8 @@ const settings = {
   font: "pentagra",
 };
 const settingsCookies = getCookies("settings");
+
+settingsPanel.style.bottom = -settingsSection.offsetHeight + 'px';
 
 if (settingsCookies !== undefined) {
   fontColor = settingsCookies.fontColor;
@@ -93,6 +99,12 @@ for (let i = 0; i < fontPicker.length; i++) {
     document.cookie = `settings=${JSON.stringify(settings)}; max-age=31536000`;
   });
 }
+settingBtn.addEventListener('click', function(){
+  settingsPanel.style.bottom = 0;
+});
+overlay.addEventListener('click',function(){
+  settingsPanel.style.bottom = -settingsSection.offsetHeight + 'px';
+})
 
 function getCookies(cookieName) {
   const cookies = document.cookie.split("; ");
@@ -106,19 +118,24 @@ function getCookies(cookieName) {
   // Если кука не найдена, возвращаем undefined
   return undefined;
 }
-function getMyCookie(cookieName, settingName) {
+
+/**
+ * Получает значение из указанной куки по заданному параметру.
+ * @param {string} cookieName - Имя куки, из которой нужно получить значение.
+ * @param {string} param - Параметр, значение которого нужно извлечь из куки.
+ * @returns {any} - Значение параметра из куки. Если кука или параметр не найдены, возвращает null.
+ */
+function getMyCookie(cookieName, param) {
   const cookies = document.cookie.split("; ");
   for (const cookie of cookies) {
     const [name, setting] = cookie.split('=');
     if (name === cookieName) {
       const cookieInObj = JSON.parse(setting);
-      if (cookieInObj.hasOwnProperty(settingName)) {
-        return cookieInObj[settingName];
+      if (cookieInObj.hasOwnProperty(param)) {
+        return cookieInObj[param];
       }
     }
   }
   // Вернуть что-то по умолчанию или null, если кука или ключ не найдены.
   return null;
 }
-
-console.log(getMyCookie('settings', 'fontColor'));

@@ -21,6 +21,15 @@ body {
   position: relative;
   overflow-y: hidden;
 }
+.overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: rgba($color: #000000, $alpha: 0);
+  z-index: 5;
+}
 
 .clock__wrapper {
   display: flex;
@@ -35,9 +44,12 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
+  // bottom: -130px;
+  transition: 0.3s ease;
 }
 
 .settings__section {
+  position: relative;
   display: flex;
   padding: 20px;
   justify-content: center;
@@ -49,6 +61,7 @@ body {
   border-top-left-radius: 20px;
   width: fit-content;
   margin: 0 auto;
+  z-index: 7;
 
   input[type=color] {
     width: 40px;
@@ -67,6 +80,14 @@ body {
       margin-bottom: 10px;
     }
   }
+}
+.settings_ico{
+  height: 37px;
+  position: relative;
+  left: calc(50% - 15px);
+  top: 6px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .color__section {
